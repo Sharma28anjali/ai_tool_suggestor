@@ -45,4 +45,4 @@ A data analyst is looking for automated ML platforms
 
 🙋‍♀️ Author
 Anjali Adichwal
-MCA Student | AI & Cybersecurity Enthusiast
+MCA Student | AI & DS
