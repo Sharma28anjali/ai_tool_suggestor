@@ -1,6 +1,6 @@
 import streamlit as st
 
-# ----------- Setup Page ----------
+
 st.set_page_config(
     page_title="AI Tool Dashboard", 
     layout="wide",
@@ -76,12 +76,12 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Header
+
 st.markdown('<h1 class="main-header">🤖 AI Tool Recommender Dashboard</h1>', unsafe_allow_html=True)
 st.markdown('<p class="sub-header">Discover top AI tools by category. 100+ curated tools!</p>', unsafe_allow_html=True)
 st.markdown("---")
 
-# ----------- Initialize Session State ----------
+
 if "favorites" not in st.session_state:
     st.session_state.favorites = []
 
@@ -89,7 +89,7 @@ if "tool_ratings" not in st.session_state:
     # Generate consistent ratings for tools
     st.session_state.tool_ratings = {}
 
-# ----------- Tool Data ----------
+
 ai_tools = {
     "Image": [
         ("Remove.bg", "https://www.remove.bg/", "Remove backgrounds from images instantly"),
@@ -209,7 +209,7 @@ ai_tools = {
     ]
 }
 
-# Initialize ratings if not exists
+
 for category_tools in ai_tools.values():
     for tool_name, _, _ in category_tools:
         if tool_name not in st.session_state.tool_ratings:
@@ -220,7 +220,7 @@ for category_tools in ai_tools.values():
 
 genres = list(ai_tools.keys())
 
-# ---------- Statistics ----------
+
 total_tools = sum(len(tools) for tools in ai_tools.values())
 total_favorites = len(st.session_state.favorites)
 
@@ -237,7 +237,7 @@ with col4:
 
 st.markdown("---")
 
-# ---------- Sidebar ----------
+
 with st.sidebar:
     st.header("📂 Filter & Options")
     
@@ -264,7 +264,7 @@ with st.sidebar:
         favorites_text = "\n".join([f"• {fav}" for fav in st.session_state.favorites])
         st.text_area("Your Favorites List", favorites_text, height=100)
 
-# ---------- Helper Functions ----------
+
 def get_star_rating(rating):
     return "⭐" * rating + "☆" * (5 - rating)
 
@@ -320,7 +320,7 @@ def display_tools(tools, category_name="default"):
                 toggle_favorite(name)
                 st.rerun()
 
-# ---------- Main Content Logic ----------
+
 def get_filtered_tools():
     all_tools = []
     
@@ -364,7 +364,7 @@ else:
     st.write(f"Showing {len(filtered_tools)} tools in {selected_genre} category")
     display_tools(filtered_tools, selected_genre)
 
-# ---------- Footer ----------
+
 st.markdown("---")
 st.markdown("""
 <div style='text-align: center; color: #666; padding: 20px;'>
